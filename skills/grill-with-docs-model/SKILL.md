@@ -1,6 +1,6 @@
 ---
 name: grill-with-docs-model
-description: Pick the model to run on, then run grill-with-docs.
+description: 実行するモデルを選んでから grill-with-docs を実行する。
 disable-model-invocation: true
 ---
 

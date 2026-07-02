@@ -1,6 +1,6 @@
 ---
 name: plan-to-issue
-description: Record an approved plan in a GitHub issue instead of a markdown file. Use right after a plan is approved coming out of plan mode, or when the user asks to write a plan as an issue. Creates a new issue when the work has none, or comments the plan onto the existing issue the work belongs to.
+description: 承認された計画をmarkdownファイルではなくGitHub issueに記録する。plan modeを抜けて計画が承認された直後、または計画をissueとして書くよう求められたときに使用。issueがなければ新規作成し、あれば対応するissueに計画をコメントする。
 ---
 
 # Plan to issue
