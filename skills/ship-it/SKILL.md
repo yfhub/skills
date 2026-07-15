@@ -1,12 +1,12 @@
 ---
 name: ship-it
-description: 実装完了後の一連の作業を一気通貫で実行する — ブランチ作成→コミット→developへのPR作成→/code-review --comment --fix→マージ→issueクローズ→ブランチ削除。
+description: 実装完了後の一連の作業を一気通貫で実行する — ブランチ作成→コミット→developへのPR作成→マージ→issueクローズ→ブランチ削除。
 disable-model-invocation: true
 ---
 
 # Ship it
 
-Take a finished implementation all the way to merged — through commit, review, PR, merge, issue close, and branch cleanup — in one **ship**.
+Take a finished implementation all the way to merged — through commit, PR, merge, issue close, and branch cleanup — in one **ship**.
 
 Requires `gh` authenticated (`gh auth status`; if it fails, tell the user to run `gh auth login` and stop). Base branch is `develop`.
 
@@ -23,8 +23,5 @@ Requires `gh` authenticated (`gh auth status`; if it fails, tell the user to run
 3. **Push and open a PR to develop.** Push the branch, then `gh pr create --base develop --title "<change summary>" --body-file <tmp>`. The body carries a change summary and `Closes #<issue-number>` so the merge auto-closes the issue (write multi-line bodies to a temp file first — inline shell quoting breaks them).
    - Done when: a PR exists targeting develop and its body closes the issue with `Closes #<issue-number>`.
 
-4. **Review and fix.** With the PR open, run `/code-review --comment --fix` — post the findings as inline PR comments and apply the fixes. Put the fixes in their own commit as the review pass (e.g. `fix: レビュー指摘対応`) and push it so the PR reflects them.
-   - Done when: review findings are resolved, their fixes live in a dedicated commit that is pushed to the PR. If any finding is left unaddressed, stop and surface it to the user rather than merging.
-
-5. **Merge and clean up.** `gh pr merge --squash --delete-branch`.
+4. **Merge and clean up.** `gh pr merge --squash --delete-branch`.
    - Done when: do not call this done until all three hold — the PR is merged, the issue is closed by `Closes` (verify with `gh issue view <N>`), and the feature branch is deleted both locally and remotely.
